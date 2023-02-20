@@ -7,7 +7,7 @@ import DropArea3 from './components/DropArea3';
 import DropArea4 from './components/DropArea4';
 
 
-const url = 'http://localhost:3030'
+const url = 'https://logistics-backend.onrender.com'
 
 function App() {
   const [customers, setCustomers] = useState([]);
@@ -16,18 +16,6 @@ function App() {
   const [moved, setMoved] = useState(false);
  
   const [futureDate, setFutureDate] = useState(new Date());
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const currentDate = new Date();
-      const newFutureDate = new Date(currentDate.getTime() + (7 * 24 * 60 * 60 * 1000));
-      setFutureDate(newFutureDate);
-    }, (7 * 24 * 60 * 60 * 1000));
-
-    return () => clearInterval(intervalId);
-  }, []);
-
- 
 
 
   // Set the date input value to be 7 days ahead of today's date
@@ -38,6 +26,9 @@ function App() {
 
   // Fetch the list of customers from the server
   useEffect(() => {
+    setReload(false)
+    setMoved(false)
+
     fetch(`${url}/customers`)
       .then(res => res.json())
       .then(data => {
@@ -46,11 +37,14 @@ function App() {
       })
       .catch(err => console.error(err));
 
-      setReload(false)
-      setMoved(false)
+      
   }, []);
 
   if(reload){
+
+    setReload(false)
+    setMoved(false)
+
     fetch(`${url}/customers`)
     .then(res => res.json())
     .then(data => {
@@ -59,8 +53,6 @@ function App() {
     })
     .catch(err => console.error(err));
 
-    setReload(false)
-    setMoved(false)
   }
 
   return (

@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 function DragAndDrop({ customers, getid, setGetId, moved, setReload }) {
   const [isDragging, setIsDragging] = useState(false);
 
-  const url = 'http://localhost:3030'
+  const url = 'https://logistics-backend.onrender.com'
 
   const handleDragStart = (event) => {
     setIsDragging(true);

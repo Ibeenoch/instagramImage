@@ -34,8 +34,7 @@ console.log('is deleted', isDelete)
   const dateString = date.toISOString().substr(0, 10);
 
 
-  const url = 'http://localhost:3030';
-
+  const url = 'https://logistics-backend.onrender.com'
 
 
   const getplanner = async () => {
@@ -67,7 +66,6 @@ console.log('is deleted', isDelete)
     
     if(getPlanner){
       setItems(getPlanner); 
-      setMoved(true);
      }else{
       setItems([])
      }

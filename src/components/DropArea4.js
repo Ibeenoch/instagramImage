@@ -2,14 +2,13 @@ import axios from 'axios';
 import React, { useState, useEffect, Children } from 'react'
 
 function DropArea4({ getid, setMoved, customers }) {
-  let getPlanner = JSON.parse(localStorage.getItem('planner1'));
+  let getPlanner = JSON.parse(localStorage.getItem('planner4'));
   const [items, setItems] = useState( getPlanner ? getPlanner : []);
   const [id, setId] = useState(0) 
   const [isDrop, setIsDrop] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   
 
- 
 
   const handleDelete = async () => {
     console.log(items)
@@ -69,6 +68,12 @@ function DropArea4({ getid, setMoved, customers }) {
 
   const handleDrop = (e) => {
     e.preventDefault(); 
+   //check if an customer order is already in the slot
+    if(items.length === 1){
+      return;
+    }
+
+    // get the  customers details
     const props = e.dataTransfer.getData("text/plain");
     const source = document.getElementById(props);    
 
@@ -88,6 +93,8 @@ function DropArea4({ getid, setMoved, customers }) {
       drop_off_location: getdata.drop_off_location
       
     }
+
+    //post the customers details to the database
     
     axios.post(`${url}/planner`, data)
     .then((response) => {

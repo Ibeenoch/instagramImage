@@ -26,16 +26,15 @@ function App() {
 
 
   // Fetch the list of customers from the server
-  useEffect(async() => {
+  useEffect(() => {
  
-   return await axios.get(`${url}/customers`)
-      .then(res => res.json())
-      .then(data => {
-        setReload(false);
-        setCustomers(data);
-        console.log(data)
-      })
-      .catch(err => console.error(err));
+    fetch(`${url}/customers`)
+    .then(res => res.json())
+    .then(data => {
+      setCustomers(data);
+      console.log(data)
+    })
+    .catch(err => console.error(err));
 
   }, []);
 

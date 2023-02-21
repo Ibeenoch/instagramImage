@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useState, useEffect, Children } from 'react'
-import io from 'socket.io-client'
 
 function DropArea3({ getid, setMoved, customers }) {
-  const [items, setItems] = useState([]);
-  const [id, setId] = useState(0)
+  let getPlanner = JSON.parse(localStorage.getItem('planner1'));
+  const [items, setItems] = useState( getPlanner ? getPlanner : []);
+  const [id, setId] = useState(0) 
   const [isDrop, setIsDrop] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   
@@ -16,7 +16,7 @@ function DropArea3({ getid, setMoved, customers }) {
     let id = items && items[0] && items[0].customer_id
 
     setIsDelete(true)
-    localStorage.removeItem('planner1')   
+    localStorage.removeItem('planner3')   
 
  return  await axios.delete(`${url}/planner/${id}`)
     .then((res) => {
@@ -27,7 +27,6 @@ function DropArea3({ getid, setMoved, customers }) {
     
   }
  
-console.log('is deleted', isDelete)
 
 
 
@@ -37,8 +36,7 @@ console.log('is deleted', isDelete)
   const dateString = date.toISOString().substr(0, 10);
 
 
-  const url = 'https://logistics-backend.onrender.com'
-
+  const url = 'https://logisticsslot-backend.ibeenoch.repl.co'
 
   const getplanner = async () => {
     // fetch items from the database
@@ -52,8 +50,9 @@ console.log('is deleted', isDelete)
         localStorage.setItem('planner3', JSON.stringify(data));
         let getPlanner = JSON.parse(localStorage.getItem('planner3'));
  
-       if(getPlanner){
+       if(data){
         setItems(getPlanner); 
+        setMoved(true);
        }else{
         setItems([])
        }
@@ -62,17 +61,6 @@ console.log('is deleted', isDelete)
       .catch((error) => console.log(error));
   }
 
-
-  useEffect(() => {
-    let getPlanner = JSON.parse(localStorage.getItem('planner3'));
-    
-    if(getPlanner){
-      setItems(getPlanner); 
-      setMoved(true);
-     }else{
-      setItems([])
-     }
-  }, [getplanner])
 
         
   if(isDrop || isDelete ){

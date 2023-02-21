@@ -2,20 +2,20 @@ import axios from 'axios';
 import React, { useState, useEffect, Children } from 'react'
 
 function DropArea4({ getid, setMoved, customers }) {
-  const [items, setItems] = useState([]);
-  const [id, setId] = useState(0)
+  let getPlanner = JSON.parse(localStorage.getItem('planner4'));
+  const [items, setItems] = useState( getPlanner ? getPlanner : []);
+  const [id, setId] = useState(0) 
   const [isDrop, setIsDrop] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   
 
- 
 
   const handleDelete = async () => {
     console.log(items)
     let id = items && items[0] && items[0].customer_id
 
     setIsDelete(true)
-    localStorage.removeItem('planner1')   
+    localStorage.removeItem('planner4')   
 
  return  await axios.delete(`${url}/planner/${id}`)
     .then((res) => {
@@ -26,7 +26,6 @@ function DropArea4({ getid, setMoved, customers }) {
     
   }
  
-console.log('is deleted', isDelete)
 
 
 
@@ -35,9 +34,7 @@ console.log('is deleted', isDelete)
   date.setDate(date.getDate() + 7);
   const dateString = date.toISOString().substr(0, 10);
 
-
-  const url = 'http://localhost:3030';
-
+  const url = 'https://logistics-backend.onrender.com'
 
 
   const getplanner = async () => {
@@ -52,7 +49,7 @@ console.log('is deleted', isDelete)
         localStorage.setItem('planner4', JSON.stringify(data));
         let getPlanner = JSON.parse(localStorage.getItem('planner4'));
  
-       if(getPlanner){
+       if(data){
         setItems(getPlanner); 
         setMoved(true);
        }else{
@@ -64,17 +61,6 @@ console.log('is deleted', isDelete)
   }
 
 
-  useEffect(() => {
-    let getPlanner = JSON.parse(localStorage.getItem('planner4'));
-    
-    if(getPlanner){
-      setItems(getPlanner); 
-      setMoved(true);
-     }else{
-      setItems([])
-     }
-  }, [getplanner])
-
         
   if(isDrop || isDelete ){
    getplanner()   
@@ -82,6 +68,12 @@ console.log('is deleted', isDelete)
 
   const handleDrop = (e) => {
     e.preventDefault(); 
+   //check if an customer order is already in the slot
+    if(items.length === 1){
+      return;
+    }
+
+    // get the  customers details
     const props = e.dataTransfer.getData("text/plain");
     const source = document.getElementById(props);    
 
@@ -101,6 +93,8 @@ console.log('is deleted', isDelete)
       drop_off_location: getdata.drop_off_location
       
     }
+
+    //post the customers details to the database
     
     axios.post(`${url}/planner`, data)
     .then((response) => {

@@ -159,4 +159,4 @@ function DropArea2({ getid, setMoved, customers }) {
 }
 
 
-export default DropArea2;
+export default DropArea2; 

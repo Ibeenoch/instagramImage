@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 function DragAndDrop({ customers, getid, setGetId, moved, setReload }) {
   const [isDragging, setIsDragging] = useState(false);
 
-  const url = 'https://logistics-backend.onrender.com'
-
+  const url = 'https://logisticsslot-backend.ibeenoch.repl.co'
+  
   const handleDragStart = (event) => {
     setIsDragging(true);
     event.dataTransfer.setData("text/plain", event.target.id);

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import DnD from './DnD';
 
 function CustomerForm({ onAddCustomer, setReload }) {
   const [name, setName] = useState('');
   const [pickUpLocation, setPickUpLocation] = useState('');
   const [dropOffLocation, setDropOffLocation] = useState('');
-  const url = 'https://logistics-backend.onrender.com'
-  const handleSubmit = event => {
+
+const url = 'https://logisticsslot-backend.ibeenoch.repl.co'
+
+const handleSubmit = event => {
     event.preventDefault();
     const customer = { name, pick_up_location: pickUpLocation, drop_off_location: dropOffLocation };
     fetch(`${url}/customers`, {
@@ -43,6 +46,7 @@ function CustomerForm({ onAddCustomer, setReload }) {
         </div>
         <button style={{ width: '180px', height:'40px', background: 'purple', color: 'white', border: 'none', borderRadius: '0.5rem', padding: '10px', cursor: 'pointer', fontSize: '1.1rem',  marginBottom: '1rem' }} type="submit">Add Customer</button>
       </form>
+      <DnD />
     </div>
   );
   }

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import CustomerForm from './components/CustomerForm';
 import DragAndDrop from './components/DragAndDrop';
@@ -7,7 +8,7 @@ import DropArea3 from './components/DropArea3';
 import DropArea4 from './components/DropArea4';
 
 
-const url = 'https://logistics-backend.onrender.com'
+const url = 'https://logisticsslot-backend.ibeenoch.repl.co'
 
 function App() {
   const [customers, setCustomers] = useState([]);
@@ -25,20 +26,19 @@ function App() {
 
 
   // Fetch the list of customers from the server
-  useEffect(() => {
-    setReload(false)
-    setMoved(false)
-
-    fetch(`${url}/customers`)
+  useEffect(async() => {
+ 
+   return await axios.get(`${url}/customers`)
       .then(res => res.json())
       .then(data => {
+        setReload(false);
         setCustomers(data);
         console.log(data)
       })
       .catch(err => console.error(err));
 
-      
   }, []);
+
 
   if(reload){
 
@@ -58,8 +58,8 @@ function App() {
   return (
     <div className="App" style={{ display: 'flex', gap: '4rem' , width: '100vw', padding: '20px'}}>
       <div style={{ width: '50vw', textAlign: 'center', fontFamily: 'cursive', }}>
-        <h1>Transportation Queue</h1>
-        <h2>Registered Customers</h2>
+        <h1>Avana Logistics Company</h1>
+        <h2>Customers Pending Logistics queue</h2>
         <DragAndDrop moved={moved} setReload={setReload} getid={getid} setGetId={setGetId} customers={customers}/>
       <CustomerForm setReload={setReload} onAddCustomer={customer => setCustomers([...customers, customer])} />
       </div>

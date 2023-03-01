@@ -69,7 +69,7 @@ if(shortToken){
   return (
     <div>
         <div>
-          <button onClick={handleLogin} style={{  height: '80px', width: 'auto', border : 'none', fontSize: '1.2rem', background: 'purple', color: 'white', borderRadius: '0.5rem', fontWeight: 500, cursor : 'pointer', padding : '5px 15px', marginLeft: 'calc(100vw/2)' }} >Get Authorization Token</button>
+          <button onClick={handleLogin} style={{  height: '80px', width: 'auto', border : 'none', fontSize: '1.2rem', background: 'purple', color: 'white', borderRadius: '0.5rem', fontWeight: 500, cursor : 'pointer', padding : '5px 15px', marginLeft: 'calc(100%/2)' }} >Get Authorization Token</button>
             <div style={{ display: 'flex', flexDirection: 'column' }} >
             <input type="text" placeholder='insert your access token here' value={gettoken} onChange={(e) => setGetToken(e.target.value)}  style={{ height: '80px', width: 'auto', border : '1px solid gray', fontSize: '1.2rem', background: 'white',  borderRadius: '0.5rem', fontWeight: 500, padding : '5px 15px', margin: '10px' }} />
           <button type='submit' onClick={getShortLiveToken} style={{ height: '80px', width: 'auto', border : 'none', fontSize: '1.2rem', background: 'purple', color: 'white', borderRadius: '0.5rem', fontWeight: 500, cursor : 'pointer', padding : '5px 15px', margin: '10px' }}>Get Photos</button>

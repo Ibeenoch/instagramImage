@@ -24,15 +24,15 @@ then you click to allow the authorizationn, it will redirects your web browser t
 The web page displayed in your new window browser is important to us <br />
 here because authorization code that has been appended to the redirect URL. <br />
 If you look in your new window browser’s URL, you should see a URL that looks something like this: <br />
-<code>
-<pre> https://localhost:3000?code=AQBvJwCZtYdj1zLH_5myoAA1GRRpDhs1vcHFMzB4gvRk6dLkq5dNd24EVZ5FD9WoqQhfSuo6arUB1
-7MPu2gRqEzP6EpsAl-9_2eC9-L6mWYQdWDyarkwDSNEs8T3gvoH-WLMHzhwwd6DJqP5PxJGf2ve53m7aGMEua3MzV8FZQVz5AfwWPN3G87n25j
+
+<pre> https://localhost:3000?code=AQBvJwCZtYdj1zLH_5myoAA1GRRpDhs1vcHFMzB4gvRk6dLkq5dNd24EVZ5FD9WoqQhfSuo6arUB1<br />
+7MPu2gRqEzP6EpsAl-9_2eC9-L6mWYQdWDyarkwDSNEs8T3gvoH-WLMHzhwwd6DJqP5PxJGf2ve53m7aGMEua3MzV8FZQVz5AfwWPN3G87n25j<br />
 MBGgGGVj6G4pxJ9HqzNKmdpYK8GHKnRn_G03scHtUraFlEX5faCvz6ZO7Xw#_</pre>
-</code>
+
 copy everything after <pre> <strong>code=</strong></pre>  up to (but not including) the ,<pre><strong>#_ </strong></pre> at the end. So, in the above URL, the authorization code would be something like this:
-<code></code>
-<pre>AQBvJwCZtYdj1zLH_5myoAA1GRRpDhs1vcHFMzB4gvRk6dLkq5dNd24EVZ5FD9WoqQhfSuo6arUB17MPu2gRqEzP6EpsAl-9_2eC9-L6m
-WYQdWDyarkwDSNEs8T3gvoH-WLMHzhwwd6DJqP5PxJGf2ve53m7aGMEua3MzV8FZQVz5AfwWPN3G87n25jMBGgGGVj6G4pxJ9HqzNKmdpYK8GH
+
+<pre>AQBvJwCZtYdj1zLH_5myoAA1GRRpDhs1vcHFMzB4gvRk6dLkq5dNd24EVZ5FD9WoqQhfSuo6arUB17MPu2gRqEzP6EpsAl-9_2eC9-L6m<br />
+WYQdWDyarkwDSNEs8T3gvoH-WLMHzhwwd6DJqP5PxJGf2ve53m7aGMEua3MzV8FZQVz5AfwWPN3G87n25jMBGgGGVj6G4pxJ9HqzNKmdpYK8GH<br />
 KnRn_G03scHtUraFlEX5faCvz6ZO7Xw</pre>
 
 after copying the token, paste it into the input field and then hit the "Get Photos" button and it will display all your Instagram Photos

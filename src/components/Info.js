@@ -19,7 +19,8 @@ const Info = () => {
     <p style={{  textAlign: 'center', }}>
     Click on <strong>Get Authorization Token</strong>  <br />
 
-then, Instagram login will pop up, after logging in it will redirects your web browser to https://localhost/3000/ <br />
+then, Instagram login will pop up, after logging in, it will ask for your authorization, <br />
+then you click to allow the authorizationn, it will redirects your web browser to https://localhost/3000/ <br />
 The web page displayed in your new window browser is important to us <br />
 here because authorization code that has been appended to the redirect URL. <br />
 If you look in your new window browser’s URL, you should see a URL that looks something like this: <br />

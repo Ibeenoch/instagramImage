@@ -10,7 +10,7 @@ const Redirect = () => {
   const [photos, setPhotos] = useState( photo ? photo : []);
   const [gettoken, setGetToken] = useState('');
   const [shortToken, setShortToken] = useState(false)
-  const url = 'http://localhost:3030'
+  const url = 'https://instagramserver.onrender.com'
 
   const clientid = '100575559642998'
   const clientsecret = '2ed05c2cf70cb1c8bc44dd2ee0d8afb5'
